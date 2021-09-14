@@ -60,8 +60,9 @@ function findEmployeeByFirstName(employees, name) {
 }
 
 function calculatePayroll(records) {
-    const wages = records.map(employee => allWagesFor(employee))
-    return reduce.reduce((previous, current) => previous + current);
+    // const wages = records.map(employee => allWagesFor(employee))
+    const total = records.reduce((total, wages) => total += allWagesFor.call(wages), 0);
+    return total;
 }
 
 let allWagesFor = function () {
